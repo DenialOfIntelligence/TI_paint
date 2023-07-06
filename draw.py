@@ -9,6 +9,7 @@ class line:
     self.y2=y2
     self.name=name
   def draw(self):
+    print(self.x1,self.y1)
     draw_line(self.x1,self.y1,self.x2,self.y2)
 class rect:
   def __init__(self, x, y, width, height, name):
@@ -18,6 +19,7 @@ class rect:
     self.height=height
     self.name=name
   def draw(self):
+    print(self.x,self.y)
     draw_rect(self.x,self.y,self.width,self.height)
 #Define the clases later used to keep track of the shapes
 #Draw the Canvas
@@ -36,8 +38,8 @@ y2=0
 draw_line(0,0,0,0) #Initiate canvas
 while get_key() != "esc":
   if get_key() == "a":
+    draw_text(2,214,"Drawing Line")
     while get_key() != "esc":
-      draw_text(2,214,"Drawing Line")
       if get_key()== "center":
         if x1==0:
           print("First pos")
@@ -57,9 +59,10 @@ while get_key() != "esc":
           y2=0
           clear()
           draw_canvas(lines, rectangles)
+          draw_text(2,214,"Drawing Line")
   if get_key() == "b":
+    draw_text(2,214,"Drawing rectangle")
     while get_key() != "esc":
-      draw_text(2,214,"Drawing rectangle")
       if get_key()== "center":
         if x1==0:
           print("First pos")
@@ -70,10 +73,10 @@ while get_key() != "esc":
           print("Sec pos")
           x2=get_mouse()[0]
           y2=get_mouse()[1]
-          width=x1-x2
-          height=y1-y2
+          width=x2-x1
+          height=y2-y1
           name = "rect" + str(len(lines) + 1)
-          instance=line(x1,y1,width,height,name)
+          instance=rect(x1,y1,width,height,name)
           rectangles.append(instance)
           x1=0
           y1=0
@@ -81,5 +84,7 @@ while get_key() != "esc":
           y2=0
           width=0
           height=0
+          
           clear()
-          draw_canvas(lines, rectangles)
+          draw_canvas(lines=lines,rectangles=rectangles)
+          draw_text(2,214,"Drawing rectangle")
