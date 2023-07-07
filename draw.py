@@ -107,7 +107,7 @@ while get_key() != "esc":
     clear()
     draw_canvas(lines,rectangles)
   if get_key()=="c":
-     draw_text(2,214,"Drawing filled rectangle")
+    draw_text(2,214,"Drawing filled rectangle")
     while get_key() != "esc":
       if get_key()== "center":
         if x1==0:
