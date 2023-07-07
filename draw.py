@@ -91,9 +91,12 @@ while get_key() != "esc":
           y2=get_mouse()[1]
           width=x2-x1
           height=y2-y1
-          name = "rect" + str(len(lines) + 1)
-          instance=rect(x1,y1,width,height,name)
-          rectangles.append(instance)
+          if width>0 or height>0:
+            print("Unable to draw shape height or width negative")
+          else:
+            name = "rect" + str(len(lines) + 1)
+            instance=rect(x1,y1,width,height,name)
+            rectangles.append(instance)
           x1=0
           y1=0
           x2=0
@@ -121,9 +124,12 @@ while get_key() != "esc":
           y2=get_mouse()[1]
           width=x2-x1
           height=y2-y1
-          name = "rect" + str(len(lines) + 1)
-          instance=full_rect(x1,y1,width,height,name)
-          full_rectangles.append(instance)
+          if width>0 or height>0:
+            print("Unable to draw shape height or width negative")
+          else:
+            name = "rect" + str(len(lines) + 1)
+            instance=full_rect(x1,y1,width,height,name)
+            full_rectangles.append(instance)
           x1=0
           y1=0
           x2=0
@@ -132,7 +138,7 @@ while get_key() != "esc":
           height=0
 
           clear()
-          draw_canvas(lines=lines,rectangles=rectangles,full_rectangles)
+          draw_canvas(lines,rectangles,full_rectangles)
           draw_text(2,214,"Drawing filled rectangle")
     clear()
     draw_canvas(lines,rectangles,full_rectangles)
