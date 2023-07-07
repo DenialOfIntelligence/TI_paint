@@ -72,10 +72,10 @@ while get_key() != "esc":
           x2=0
           y2=0
           clear()
-          draw_canvas(lines, rectangles)
+          draw_canvas(lines, rectangles, full_rectangles)
           draw_text(2,214,"Drawing Line")
     clear()
-    draw_canvas(lines,rectangles)
+    draw_canvas(lines,rectangles,full_rectangles)
   if get_key() == "b":
     draw_text(2,214,"Drawing rectangle")
     while get_key() != "esc":
@@ -105,7 +105,7 @@ while get_key() != "esc":
           height=0
           
           clear()
-          draw_canvas(lines=lines,rectangles=rectangles)
+          draw_canvas(lines,rectangles,full_rectangles)
           draw_text(2,214,"Drawing rectangle")
     clear()
     draw_canvas(lines,rectangles)
