@@ -40,7 +40,7 @@ def draw_canvas(lines, rectangles,full_rectangles):
     instance.draw()
   for instance in full_rectangles:
     instance.draw()
-
+last_colours=[]
 lines=[]
 rectangles=[]
 full_rectangles=[]
@@ -142,3 +142,12 @@ while get_key() != "esc":
           draw_text(2,214,"Drawing filled rectangle")
     clear()
     draw_canvas(lines,rectangles,full_rectangles)
+  if get_key()=="/":
+    draw_line(0,176,318,176)#Draw last color divider line
+    if len(last_colours)>0:
+      for i, (r, b, g) in last_colours:
+        set_color(r,g,b)
+        x1=i*17
+        fill_rect(x1,187,17,17)
+
+
