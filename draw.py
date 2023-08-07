@@ -1,6 +1,7 @@
 from ti_system import *
 from ti_draw import *
-
+from ti_image import *
+color_ui=load_image("UI") # Load color picker UI
 class line:
   def __init__(self, x1, y1, x2, y2, name):
     self.x1=x1
@@ -40,6 +41,16 @@ def draw_canvas(lines, rectangles,full_rectangles):
     instance.draw()
   for instance in full_rectangles:
     instance.draw()
+def translate(value, leftMin, leftMax, rightMin, rightMax): #Shamelessly stolen from stack overflow :3
+    # Figure out how 'wide' each range is
+    leftSpan = leftMax - leftMin
+    rightSpan = rightMax - rightMin
+
+    # Convert the left range into a 0-1 range (float)
+    valueScaled = float(value - leftMin) / float(leftSpan)
+
+    # Convert the 0-1 range into a value in the right range.
+    return rightMin + (valueScaled * rightSpan)
 last_colours=[]
 lines=[]
 rectangles=[]
@@ -48,6 +59,9 @@ x1=0
 y1=0
 x2=0
 y2=0
+r=0
+g=0
+b=0
 draw_line(0,0,0,0) #Initiate canvas
 while get_key() != "esc":
   if get_key() == "a":
@@ -143,11 +157,27 @@ while get_key() != "esc":
     clear()
     draw_canvas(lines,rectangles,full_rectangles)
   if get_key()=="/":
-    draw_line(0,176,318,176)#Draw last color divider line
-    if len(last_colours)>0:
-      for i, (r, b, g) in last_colours:
-        set_color(r,g,b)
-        x1=i*17
-        fill_rect(x1,187,17,17)
-
-
+    while get_key() != "esc":
+      color_ui.show_image(0,0)
+      draw_rect(226,86,35,35)
+      if get_key()=="1":
+        while get_key() != "esc":
+          y=get_mouse[1]
+          if y < 159 and y > 71:
+            r=int(translate(y,71,159,0,255))
+            draw_rect(67,y,10,2)
+            set_color(r,g,b)
+      if get_key()=="2":
+        while get_key() != "esc":
+          y=get_mouse[1]
+          if y < 159 and y > 71:
+            g=int(translate(y,71,159,0,255))
+            draw_rect(108,y,10,2)
+            set_color(r,g,b)
+      if get_key()=="3":
+        while get_key() != "esc":
+          y=get_mouse[1]
+          if y < 159 and y > 71:
+            r=int(translate(y,71,159,0,255))
+            draw_rect(148,y,10,2)
+            set_color(r,g,b)
