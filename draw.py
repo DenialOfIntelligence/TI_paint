@@ -157,27 +157,29 @@ while get_key() != "esc":
     clear()
     draw_canvas(lines,rectangles,full_rectangles)
   if get_key()=="/":
+    draw_rect(226,86,35,35)
     while get_key() != "esc":
       color_ui.show_image(0,0)
-      draw_rect(226,86,35,35)
       if get_key()=="1":
         while get_key() != "esc":
-          y=get_mouse[1]
+          y=get_mouse()[1]
           if y < 159 and y > 71:
             r=int(translate(y,71,159,0,255))
             draw_rect(67,y,10,2)
             set_color(r,g,b)
       if get_key()=="2":
         while get_key() != "esc":
-          y=get_mouse[1]
+          y=get_mouse()[1]
           if y < 159 and y > 71:
             g=int(translate(y,71,159,0,255))
             draw_rect(108,y,10,2)
             set_color(r,g,b)
       if get_key()=="3":
         while get_key() != "esc":
-          y=get_mouse[1]
+          y=get_mouse()[1]
           if y < 159 and y > 71:
             r=int(translate(y,71,159,0,255))
             draw_rect(148,y,10,2)
             set_color(r,g,b)
+    clear()
+    draw_canvas(lines,rectangles,full_rectangles)
